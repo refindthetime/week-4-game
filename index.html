@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 <!--Link to JS-->
-<link rel="stylesheet" type="text/js" href="assets/javascript.css">
+<link href="assets/game.js">
 </head>
 
 <body>
@@ -56,10 +56,10 @@
 	</div>
 	<div class="col-md-2"><div class="well">
 	<p>Wins</p>
-	<p id="#wins">wins#</p>
+	<p id="wins">0</p>
 	
 	<p>Losses</p>
-	<p id="#losses">losses#</p>
+	<p id="losses">0</p>
 		</div>
 		
 	</div>
@@ -97,45 +97,85 @@
 </div>
 </div>
 </body>
+
 <script type="text/javascript">
 	
-var minNumber = 19
-var maxNumber = 120
-var i = [0]
+var wins = 0;
+var losses = 0;
+var totalScore = 0;
 
-//code for random number on load
-$(document).ready(function() {
-	var random = Math.floor(Math.random()* (maxNumber - minNumber)) + minNumber;
-  	console.log(random);
-    $("#randomNumber").html(random);
+//Random Number
+var randomNumber = Math.floor((Math.random()* 120 - 19) + 19);
 
-//crystal buttons
+//Random Crystal
+var crystal1 = Math.floor((Math.random()* 12) + 1);
+var crystal2 = Math.floor((Math.random()* 12) + 1);
+var crystal3 = Math.floor((Math.random()* 12) + 1);
+var crystal4 = Math.floor((Math.random()* 12) + 1);
 
-$("#crystal1").on('click', function (){
-      var crystal = Math.floor(Math.random()* (12 - 1)) + 1;
-  	  console.log(crystal);
-      $("#totalScore").html(crystal);
-     })
-$("#crystal2").on('click', function (){
-      var crystal = Math.floor(Math.random()* (12 - 1)) + 1;
-  	  console.log(crystal);
-      $("#totalScore").html(crystal);
-     })
-$("#crystal3").on('click', function (){
-      var crystal = Math.floor(Math.random()* (12 - 1)) + 1;
-  	  console.log(crystal);
-      $("#totalScore").html(crystal);
-     })
-$("#crystal4").on('click', function (){
-      var crystal = Math.floor(Math.random()* (12 - 1)) + 1;
-  	  console.log(crystal);
-      $("#totalScore").html(crystal);
-     })
+//wins and loss counter to append html
+var configureTotal = function(){
+	$('#wins').empty();
+	$('#wins').append(wins);
+	$('#losses').empty();
+	$('#losses').append(losses);
+	$('#totalScore').empty();
+	$('#totalScore').append(totalScore);
+	
+}
 
+//game reset
+var reset = function(){
+	totalScore = 0;
+    randomNumber = Math.floor((Math.random()* 120 - 19) + 19);
 
+	$('#randomNumber').empty();
+	$('#randomNumber').append(randomNumber);
 
+	crystal1 = Math.floor((Math.random()* 12) + 1);
+    crystal2 = Math.floor((Math.random()* 12) + 1);
+    crystal3 = Math.floor((Math.random()* 12) + 1);
+    crystal4 = Math.floor((Math.random()* 12) + 1);
+    configureTotal();
+}
 
-    });
+//main game function
+var config = function (){
+	if (totalScore == randomNumber) {
+		wins = wins + 1;
+		reset();
+}
+	else if(totalScore > randomNumber){
+		losses = losses + 1;
+		reset();
+}
+	else{
+		configureTotal();
+}}
+
+//button functions
+	$('#totalScore').append(totalScore);
+	$('#randomNumber').append(randomNumber);
+
+	$(document).ready(function(){
+	$('#crystal1').click(function(){
+		totalScore = totalScore + crystal1;
+		config();
+	})
+	$('#crystal2').click(function(){
+		totalScore  = totalScore  + crystal3;
+		config();
+	})
+	$('#crystal3').click(function(){
+		totalScore  = totalScore  + crystal3;
+		config();
+	})
+	$('#crystal4').click(function(){
+		totalScore  = totalScore  + crystal4;
+		config();
+	})
+});
+
 
 
 </script>
