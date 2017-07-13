@@ -1,0 +1,20 @@
+body {
+
+	background-image: url("../images/backimage.jpg");
+	background-position: left top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    font-family: impact ;
+    font-style: oblique;
+    font-size: 20px;
+    text-shadow: 3px 1px black;
+}
+
+.well{
+
+	background-color: rgba(245, 245, 245, 0.4);
+	background opacity: 10%;
+}
+
+
