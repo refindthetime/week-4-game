@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Crystal Collector</title>
+<!-- Added link to the jQuery Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Added a link to Bootstrap-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!--Link to CSS-->
+<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+<!--Link to JS-->
+<link rel="stylesheet" type="text/js" href="assets/javascript.css">
+</head>
+
+<body>
+
+<!--Title-->
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-4"><div class="page-header">
+	<h1 id="Title" class="well">Crystal Collector!</h1>
+	</div>
+	</div>
+	</div>
+</div>
+
+<!--instructions-->
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-4">
+<div class="well" id="Instructions">
+
+	<p>You will be given a random number at the start of the game. </p>
+
+	<p>There are four crystals below. By clicking on a crystal you will add a specific amount to your total score.</p> 
+
+	<p>You win the game by matching your total score to the the random number. You lose the game if your total score goes above the random number.</p>
+
+	<p>The value of each crystal is hidden from you until you click on it.</p>
+
+	<p>Each time you start a new game, the crystal values will randomize.</p>
+</div>
+</div>
+</div>
+</div>
+
+<!--random number and total wins-losses-->
+<div class="container-fluid">
+<div class="row">
+	<div class="col-md-4">
+	<p id="randomNumber" class="well"></p>
+	</div>
+	<div class="col-md-2"><div class="well">
+	<p>Wins</p>
+	<p id="#wins">wins#</p>
+	
+	<p>Losses</p>
+	<p id="#losses">losses#</p>
+		</div>
+		
+	</div>
+</div>
+</div>
+
+<!--image buttons-->
+<div class="container-fluid">
+<div class="row">
+	<div class="col-md-9">
+	<button type="button" class="btn btn-default"><img src="assets/images/crystal1.png" width="100" class="img-responsive" alt="Responsive image" id="crystal1"></button>
+	<button type="button" class="btn btn-default"><img src="assets/images/crystal2.png" width="100" class="img-responsive" alt="Responsive image" id="crystal2"></button>
+	<button type="button" class="btn btn-default"><img src="assets/images/crystal3.png" width="100" class="img-responsive" alt="Responsive image" id="crystal3"></button>
+	<button type="button" class="btn btn-default"><img src="assets/images/crystal4.png" width="100" class="img-responsive" alt="Responsive image" id="crystal4"></button>
+</div>
+</div>
+</div>
+
+<!--Total from crystals header-->
+<div class="container-fluid">
+<div class="row">
+	<div class="col-md-4">
+	<h3 class="well">Your Total Score Is</h3>
+</div>
+</div>
+</div>
+
+<!--Total from crystals number-->
+
+<div class="container-fluid">
+<div class="row">
+	<div class="col-md-4"> 
+	<p id="totalScore" class="well"></p>
+</div>
+</div>
+</div>
+</body>
+<script type="text/javascript">
+	
+var minNumber = 19
+var maxNumber = 120
+var i = [0]
+
+//code for random number on load
+$(document).ready(function() {
+	var random = Math.floor(Math.random()* (maxNumber - minNumber)) + minNumber;
+  	console.log(random);
+    $("#randomNumber").html(random);
+
+//crystal buttons
+
+$("#crystal1").on('click', function (){
+      var crystal = Math.floor(Math.random()* (12 - 1)) + 1;
+  	  console.log(crystal);
+      $("#totalScore").html(crystal);
+     })
+$("#crystal2").on('click', function (){
+      var crystal = Math.floor(Math.random()* (12 - 1)) + 1;
+  	  console.log(crystal);
+      $("#totalScore").html(crystal);
+     })
+$("#crystal3").on('click', function (){
+      var crystal = Math.floor(Math.random()* (12 - 1)) + 1;
+  	  console.log(crystal);
+      $("#totalScore").html(crystal);
+     })
+$("#crystal4").on('click', function (){
+      var crystal = Math.floor(Math.random()* (12 - 1)) + 1;
+  	  console.log(crystal);
+      $("#totalScore").html(crystal);
+     })
+
+
+
+
+    });
+
+
+</script>
+</html>
